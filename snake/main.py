@@ -1,5 +1,5 @@
 import pygame 
-from asset import arena,Ular, Makan
+from asset import arena, Ular, Makan
 
 #window
 window = arena(1000,1000,50,50)

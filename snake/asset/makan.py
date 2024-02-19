@@ -28,5 +28,4 @@ class makan():
         start_y = self.tinggi*self.posisiAwal[1]
         pygame.draw.rect(self.surface, self.warna,(start_x,start_y,self.lebar,self.tinggi))
         
-    def __repr__(self):
-        return f"{self.nama}"
+    

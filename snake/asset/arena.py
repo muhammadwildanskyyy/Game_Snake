@@ -122,8 +122,6 @@ class arena () :
         
     def render_mainMenu(self,fps) :
         self.surface.fill((37,56,60))
-        
-        
         self.drawGrid()
         self.mainMenu()
         self.copyRight()

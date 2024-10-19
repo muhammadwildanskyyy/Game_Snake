@@ -53,26 +53,26 @@ class arena () :
         font = pygame.font.Font('freesansbold.ttf', 20)
         welcome_font = font.render('Archive by Ardan', True, (255, 255, 255))
         welcome_rect = welcome_font.get_rect()
-        welcome_rect.topleft = (self.arenaLebar -600 , self.arenaTinggi-60)
+        welcome_rect.topleft = (self.arenaLebar - 490 , self.arenaTinggi-60)
         self.surface.blit(welcome_font, welcome_rect)
         
     def mainMenu(self) :
-        font = pygame.font.Font('freesansbold.ttf', 100)
+        font = pygame.font.Font('freesansbold.ttf', 60)
         welcome_font = font.render('WELCOME TO', True, (255, 255, 255))
         welcome_rect = welcome_font.get_rect()
-        welcome_rect.topleft = (self.arenaLebar - 850 , self.arenaTinggi - 700)
+        welcome_rect.topleft = (self.arenaLebar - 600 , self.arenaTinggi - 680)
         self.surface.blit(welcome_font, welcome_rect)
         
-        font = pygame.font.Font('freesansbold.ttf', 100)
+        font = pygame.font.Font('freesansbold.ttf', 60)
         welcome_font = font.render('SNAKE', True, (255, 255, 255))
         welcome_rect = welcome_font.get_rect()
-        welcome_rect.topleft = (self.arenaLebar - 700, self.arenaTinggi - 600)
+        welcome_rect.topleft = (self.arenaLebar - 500, self.arenaTinggi - 600)
         self.surface.blit(welcome_font, welcome_rect)
         
         font = pygame.font.Font('freesansbold.ttf', 20)
         start_font = font.render('Press Space To Start The Game', True, (255, 255, 255))
         start_rect = start_font.get_rect()
-        start_rect.topleft = (self.arenaLebar - 680, self.arenaTinggi - 400)
+        start_rect.topleft = (self.arenaLebar - 550, self.arenaTinggi - 400)
         self.surface.blit(start_font, start_rect)
          
     def getScore(self,score,hightScore, level, hightLevel):
@@ -102,22 +102,22 @@ class arena () :
         self.surface.blit(hightLevel_font, hightLevel_rect)
           
     def gameOver(self,score) :
-        font = pygame.font.Font('freesansbold.ttf', 100)
+        font = pygame.font.Font('freesansbold.ttf', 80)
         gameOver_font = font.render('GAME OVER', True, (255, 255, 255))
         gameOver_rect = gameOver_font.get_rect()
-        gameOver_rect.topleft = (self.arenaLebar - 800, self.arenaTinggi - 700)
+        gameOver_rect.topleft = (self.arenaLebar - 650, self.arenaTinggi - 700)
         self.surface.blit(gameOver_font, gameOver_rect)
         
         font = pygame.font.Font('freesansbold.ttf', 50)
         score_font = font.render('Score: %s' % (score), True, (255, 255, 255))
         score_rect = score_font.get_rect()
-        score_rect.topleft = (self.arenaLebar - 600, self.arenaTinggi - 500)
+        score_rect.topleft = (self.arenaLebar - 500, self.arenaTinggi - 500)
         self.surface.blit(score_font, score_rect)
         
         font = pygame.font.Font('freesansbold.ttf', 20)
         retrun_font = font.render('Press Return To Continue The Game', True, (255, 255, 255))
         retrun_rect = retrun_font.get_rect()
-        retrun_rect.topleft = (self.arenaLebar - 680, self.arenaTinggi - 400)
+        retrun_rect.topleft = (self.arenaLebar - 600, self.arenaTinggi - 400)
         self.surface.blit(retrun_font, retrun_rect)
         
     def render_mainMenu(self,fps) :

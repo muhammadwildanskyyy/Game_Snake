@@ -2,7 +2,7 @@ import pygame
 from asset import arena, Ular, Makan
 
 #window
-window = arena(1000,1000,50,50)
+window = arena(800,800,50,50)
 
 #object
 ular = Ular(window,(25,25),arahX=1)

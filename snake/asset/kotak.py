@@ -1,14 +1,19 @@
 import pygame 
+import numpy as np
 
-class kotak():
+class Kotak():
     
-    
-    def __init__(self,arena, posisiAwal, arahX=0, arahY=0, warna=(0,0,0), nama="Ekor") :
+    def __init__(self,arena, posisiAwal, arahX=0, arahY=0, warna=(0,0,0), nama="Ekor",user="ular") :
         self.nama = nama
         self.posisiAwal = posisiAwal
+        self.posisiBadan = []
         self.arahX = arahX
         self.arahY = arahY
-        self.warna = warna
+        if user == "ular":
+            self.warna = (0,0,0)
+        elif user == "enemy" :
+            self.warna = (warna)
+        # self.warna = warna
         self.surface = arena.get_surface()
         self.lebar = arena.get_jarak_kolom()
         self.tinggi = arena.get_jarak_baris()
@@ -17,7 +22,7 @@ class kotak():
         
     def getPos(self) :
         return self.posisiAwal
-
+    
     def get_arah_x(self):
         return self.arahX
     
@@ -39,6 +44,8 @@ class kotak():
             self.posisiAwal = (self.posisiAwal[0],0)
         elif self.posisiAwal[1] < 0:
             self.posisiAwal = (self.posisiAwal[0],self.arena.get_jumlah_baris()-1)
+    
+        self.posisiBadan.append(self.posisiAwal)
         
     def draw(self) :
         start_x = self.lebar*self.posisiAwal[0]
@@ -47,5 +54,9 @@ class kotak():
         
     def __repr__(self):
         return f"{self.nama}"
+    
+
+    
+
         
 

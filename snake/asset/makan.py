@@ -2,7 +2,7 @@ import pygame
 from numpy import random as rnd
 class makan():
     
-    def __init__(self,arena, warna=(220,20,60), nama="Ekor") :
+    def __init__(self,arena, warna=(0,255,0), nama="Ekor") :
         posisi_x_makan = rnd.random_integers(0,arena.get_jumlah_kolom()-1)
         posisi_y_makan = rnd.random_integers(0,arena.get_jumlah_baris()-1)
 

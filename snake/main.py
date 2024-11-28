@@ -1,11 +1,12 @@
 import pygame 
-from asset import arena, Ular, Makan
+from asset import arena, Ular, Makan, Enemy
 
 #window
 window = arena(800,800,50,50)
 
 #object
-ular = Ular(window,(25,25),arahX=1)
+ular = Ular(window,(25,25),user="ular")
+listEnemy = []
 makanan = Makan(window)
 
 #indikator
@@ -16,6 +17,8 @@ score = 1
 hightScore = 0
 hightLevel = 0
 endSkore = 0
+createEnemy = True
+ularCrash = None
 
 #main Loop
 mainProgram = True
@@ -56,15 +59,35 @@ while mainProgram:
                 mainProgram = False
                 game = False
                 print("exit")
+        
+        if score%2 == 0 and createEnemy :
+            newEnemy = Enemy(window,(30,30),user="enemy")
+            print("create enemy")
+            for i in range(5):
+                newEnemy.tambahKotak()
+            listEnemy.append(newEnemy)
+            createEnemy = False
+        elif score % 2 != 0: createEnemy = True if len(listEnemy) < 3 else False
+
 
         # update object
-        ular.move()
-        
+        ular.move()  
+        for enemy in listEnemy:
+            enemy.move()
+            
+            # game over
+            if ular.getPos() in enemy.getPosBadan():
+                ularCrash = enemy
+                print("Snake Crash")   
+            
         # game over
-        if ular.is_collide():
+        if ular.is_collide() or ularCrash:
             # reset snake
             window.reset_member()
             ular.reset()
+            for enemy in listEnemy :
+                enemy.reset()
+            
             # food
             makanan = Makan(window)
             #indikator
@@ -78,9 +101,14 @@ while mainProgram:
             gameOver = True
             game = False
             
+           
         # eat
         if ular.getPos() == makanan.getPos() :
             ular.tambahKotak()
+            for enemy in listEnemy :
+                enemy.tambahKotak()
+                
+            
             makanan.set_pos()
             memakan += 1
             score += 1
@@ -108,9 +136,11 @@ while mainProgram:
         if keys[pygame.K_RETURN] :
             game = True
             gameOver = False
+            ularCrash = None
+            listEnemy.clear()  
+            createEnemy = True 
             
-            
-        # uodate and render˜
+        # update and render˜
         window.render_gameover(30,endSkore)
     
        
